@@ -1,0 +1,51 @@
+* {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.bug{
+	border: 1px dashed #F0F0F0;
+}
+
+.info{
+	font-color: #FAFAFA;
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+.container{
+	margin: 2rem auto;
+}
+
+.title{
+	font-size: 2rem;	
+	width: 33.333%;	
+	margin: auto auto;	
+	margin-bottom: 2rem;	
+}
+
+.label{
+	font-weight: bold;	
+	border-left: 0.3rem solid red;	
+	padding-left: 0.5rem;
+	background-color: #F0F0F0;
+	display: block;
+}
+
+.jumbotron{
+	border: 0.2rem solid #002e4d;
+	padding-top: 2rem;
+	padding-bottom: 0px;
+}
+
+.jumbotron-link{
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
+.btn-area{
+	display: block;	
+}
+
+.custom-file{
+	margin-bottom: 1rem;
+}
