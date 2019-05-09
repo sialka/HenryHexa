@@ -22,7 +22,14 @@
                 
                 <form method="POST" action="#">
 
-                    <div class="form-group">              
+                    <div class="form-group"> 
+                
+                        {if="$msgPis != ''"}
+                        <div class="alert {$msgPis[css]}">
+                            {$msgPis[message]}
+                        </div>
+                        {/if}
+                                     
                         <label for="" class="label">PIS</label>
                         <input class="form-control" type="text" name="pis" placeholder="Digite o seu numero de PIS" autofocus>
                     </div>                                                   
@@ -49,6 +56,12 @@
             <div class="col-6">
 
                 <form method="POST" action="#" enctype="multipart/form-data">
+
+                    {if="$msgFile != ''"}
+                    <div class="alert {$msgFile[css]}">
+                        {$msgFile[message]}
+                    </div>
+                    {/if}
                     
                     <p class="label">Enviando Arquivo de Dados</p>
 
