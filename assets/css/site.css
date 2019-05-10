@@ -2,8 +2,9 @@
 	font-family: 'Open Sans', sans-serif;
 }
 
-.bug{
-	border: 1px dashed #F0F0F0;
+.box{
+	border: 1px solid #DCDCDC;
+	padding: 5px;
 }
 
 .info{
@@ -26,6 +27,7 @@
 .label{
 	font-weight: bold;	
 	border-left: 0.3rem solid red;	
+	border-radius: 5px;
 	padding-left: 0.5rem;
 	background-color: #F0F0F0;
 	display: block;
