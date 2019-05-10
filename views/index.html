@@ -22,6 +22,8 @@
                 
                 <form method="POST" action="#">
 
+                    <div class="box shadow">
+                    
                     <div class="form-group"> 
                 
                         {if="$msgPis != ''"}
@@ -36,17 +38,40 @@
                 
                     <div class="form-group">
                         <label for="" class="label">Selecione o Arquivo de Dados</label>
-                        <select class="custom-select" size="5" name="arquivo">
-                            <option value="">Arquivo de dados</option>
-                            <option value="">Arquivo de dados</option>
-                            <option value="">Arquivo de dados</option>
-                            <option value="">Arquivo de dados</option>
-                            <option value="">Arquivo de dados</option>
-                        </select>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Arquivo</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th width="40%">arquivo.txt</th>
+                                    <th width="20%">10/05/2019</th>
+                                    <th width="20%">13:54</th>
+                                    <th width="10%">
+                                        <a href="">
+                                            <i class="fas fa-search text-success"></i>
+                                        </a>
+                                    </th>
+                                    <th width="10%">
+                                        <a href="">
+                                            <i class="fas fa-trash text-danger"></i>
+                                        </a>
+                                    </th>
+                                </tr>
+                            </tbody>                            
+                        </table>
                     </div>                   
 
                     <div class="btn-area text-right">
                         <input class="btn btn-primary" type="submit" name="submit" value="Pesquisar">
+                    </div>
+
                     </div>
 
                 </form>
@@ -57,22 +82,26 @@
 
                 <form method="POST" action="/upload" enctype="multipart/form-data">
 
-                    {if="$msgFile != ''"}
-                    <div class="alert {$msgFile[css]}">
-                        {$msgFile[message]}
-                    </div>
-                    {/if}
+                    <div class="box shadow">
                     
-                    <p class="label">Enviando Arquivo de Dados</p>
+                        {if="$msgFile != ''"}
+                        <div class="alert {$msgFile[css]}">
+                            {$msgFile[message]}
+                        </div>
+                        {/if}
+                        
+                        <p class="label">Enviando Arquivo de Dados</p>
 
-                    <div class="custom-file">                    
-                        <input type="file" class="custom-file-input" id="file" name="file" accept=".txt">
-                        <label class="custom-file-label" for="customFile">Clique para enviar o arquivo</label>
-                    </div>   
+                        <div class="custom-file">                    
+                            <input type="file" class="custom-file-input" id="file" name="file" accept=".txt">
+                            <label class="custom-file-label" for="customFile">Clique para enviar o arquivo</label>
+                        </div>   
 
-                    <div class="btn-area text-right">
-                        <input class="btn btn-primary" type="submit" name="submit" value="Enviar">
-                    </div>                                                     
+                        <div class="btn-area text-right">
+                            <input class="btn btn-primary" type="submit" name="submit" value="Enviar">
+                        </div>                                                     
+
+                    </div>
                 
                 </form>
 
