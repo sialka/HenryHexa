@@ -4,5 +4,26 @@
         
         <!-- Bootstrap -->
         <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>    	
+        <script type="text/javascript">	
+
+			let div = document.getElementsByClassName("custom-file-label")[0];
+			let input = document.getElementById("file");
+
+			div.addEventListener("click", function(){
+			
+			    input.click();
+			
+			});
+
+			input.addEventListener("change", function(){
+			    
+			    let nome = "Não há arquivo selecionado. Selecionar arquivo...";
+			    
+			    if(input.files.length > 0) nome = input.files[0].name;
+			    div.innerHTML = nome;
+
+			});	
+
+		</script>
     </body>
 </html>

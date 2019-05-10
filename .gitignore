@@ -3,3 +3,7 @@ vendor/
 
 # Cache
 views-cache/*
+
+# Files Data
+
+data/*
