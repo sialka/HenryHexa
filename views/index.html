@@ -55,7 +55,7 @@
 
             <div class="col-6">
 
-                <form method="POST" action="#" enctype="multipart/form-data">
+                <form method="POST" action="/upload" enctype="multipart/form-data">
 
                     {if="$msgFile != ''"}
                     <div class="alert {$msgFile[css]}">
@@ -66,7 +66,7 @@
                     <p class="label">Enviando Arquivo de Dados</p>
 
                     <div class="custom-file">                    
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" class="custom-file-input" id="file" name="file" accept=".txt">
                         <label class="custom-file-label" for="customFile">Clique para enviar o arquivo</label>
                     </div>   
 

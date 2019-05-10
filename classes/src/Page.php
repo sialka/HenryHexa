@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\src;
 
 use Rain\Tpl;
 
