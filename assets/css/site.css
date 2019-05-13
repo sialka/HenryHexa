@@ -2,35 +2,10 @@
 	font-family: 'Open Sans', sans-serif;
 }
 
-.box{
-	border: 1px solid #DCDCDC;
-	padding: 5px;
-}
-
-.info{
-	font-color: #FAFAFA;
-	font-size: 0.9rem;
-	text-align: center;
-}
+/* Ambiente */
 
 .container{
 	margin: 2rem auto;
-}
-
-.title{
-	font-size: 2rem;	
-	width: 33.333%;	
-	margin: auto auto;	
-	margin-bottom: 2rem;	
-}
-
-.label{
-	font-weight: bold;	
-	border-left: 0.3rem solid red;	
-	border-radius: 5px;
-	padding-left: 0.5rem;
-	background-color: #F0F0F0;
-	display: block;
 }
 
 .jumbotron{
@@ -44,8 +19,39 @@
 	margin-bottom: 2rem;
 }
 
-.btn-area{
-	display: block;	
+.link{
+	font-color: #FAFAFA;
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+.subtitle{
+	font-size: 2rem;	
+	width: 33.333%;	
+	margin: auto auto;	
+	margin-bottom: 2rem;	
+}
+
+/* Area de trabalho */
+
+.box{
+	border: 1px solid #DCDCDC;
+	padding: 1rem 1rem;
+}
+
+.label{
+	font-weight: bold;	
+	border-left: 0.3rem solid red;	
+	border-radius: 5px;
+	padding-left: 0.5rem;
+	background-color: #F0F0F0;
+	display: block;
+	padding: 0.8rem 0.5rem;
+	text-transform: uppercase;	
+}
+
+.form-group{	
+	padding-bottom: 1rem;
 }
 
 .custom-file{

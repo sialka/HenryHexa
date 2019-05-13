@@ -1,18 +1,19 @@
 
 <div class="container">
+
     <div class="jumbotron bg-white">            
                 
         <h1 class="display-4 text-primary text-center">
             Henry Hexa
         </h1>                           
                 
-        <p class="info">                                  
+        <p class="link">                                  
             <a href="#">Versão 4</a>
         </p>                        
                 
         <hr class="my-4">     
 
-        <h2 class="display-4 title text-primary text-center">
+        <h2 class="display-4 subtitle text-primary text-center">
             Consultando
         </h2>
 
@@ -24,53 +25,59 @@
 
                     <div class="box shadow">
                     
-                    <div class="form-group"> 
-                
-                        {if="$msgPis != ''"}
-                        <div class="alert {$msgPis[css]}">
-                            {$msgPis[message]}
-                        </div>
-                        {/if}
-                                     
-                        <label for="" class="label">PIS</label>
-                        <input class="form-control" type="text" name="pis" placeholder="Digite o seu numero de PIS" autofocus>
-                    </div>                                                   
-                
-                    <div class="form-group">
-                        <label for="" class="label">Selecione o Arquivo de Dados</label>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Arquivo</th>
-                                    <th>Data</th>
-                                    <th>Hora</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th width="40%">arquivo.txt</th>
-                                    <th width="20%">10/05/2019</th>
-                                    <th width="20%">13:54</th>
-                                    <th width="10%">
-                                        <a href="">
-                                            <i class="fas fa-search text-success"></i>
-                                        </a>
-                                    </th>
-                                    <th width="10%">
-                                        <a href="">
-                                            <i class="fas fa-trash text-danger"></i>
-                                        </a>
-                                    </th>
-                                </tr>
-                            </tbody>                            
-                        </table>
-                    </div>                   
+                        <div class="form-group"> 
+                    
+                            {if="$msgPis != ''"}
+                            <div class="alert {$msgPis[css]}">
+                                {$msgPis[message]}
+                            </div>
+                            {/if}
+                                         
+                            <label for="" class="label">
+                                <i class="fa fa-address-book text-secondary "></i>
+                                PIS
+                            </label>
 
-                    <div class="btn-area text-right">
-                        <input class="btn btn-primary" type="submit" name="submit" value="Pesquisar">
-                    </div>
+                            <input class="form-control" type="text" name="pis" placeholder="Digite o seu numero de PIS" autofocus>
+                        </div>                                                   
+                    
+                        <div class="form-group">
+                            <label for="" class="label">
+                                <i class="fa fa-archive text-secondary "></i>
+                                Selecione o Arquivo de Dados
+                            </label>
+
+                            <div class="table-responsive">
+                            
+                            <table width="100%" class="table table-hover table-bordered ">
+                                 <thead class="thead-light">
+                                    <tr>
+                                        <th>Lista de Arquivos</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {loop="$files"}
+                                    <tr>
+                                        <td width="80%">{function="WithoutExtension($value)"}</td>                                   
+                                        <td class="text-center" width="10%">
+                                            <a href="">
+                                                <i class="fas fa-search text-success"></i>
+                                            </a>
+                                        </td>
+                                        <td class="text-center" width="10%">
+                                            <a href='/delete/{function="WithoutExtension($value)"}'>
+                                                <i class="fas fa-trash text-danger"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {/loop}
+                                </tbody>                            
+                            </table>
+
+                            </div>
+                        </div>                   
 
                     </div>
 
@@ -90,7 +97,9 @@
                         </div>
                         {/if}
                         
-                        <p class="label">Enviando Arquivo de Dados</p>
+                        <p class="label">
+                        <i class="fa fa-file text-secondary "></i>
+                        Enviando Arquivo de Dados</p>
 
                         <div class="custom-file">                    
                             <input type="file" class="custom-file-input" id="file" name="file" accept=".txt">
