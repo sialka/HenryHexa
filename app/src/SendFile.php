@@ -8,9 +8,7 @@ class SendFile {
 
 		$fileName = $_FILES['file']['name'];
 
-		// dd($_FILES);
-
-		$file = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . $fileName;
+		$file = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . RouteMount($fileName);
 
 		if (file_exists($file)) {
 			return false;
