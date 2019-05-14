@@ -5,8 +5,8 @@ use App\src\Page;
 use App\src\SendFile;
 use App\src\ToolsFiles;
 
-$app->get("/delete/:file", function ($file) {
-
+$app->get("/delete/:file", function ($file) {	
+	
 	ToolsFiles::deleteFile($file);
 
 	header("Location: /");
@@ -16,16 +16,33 @@ $app->get("/delete/:file", function ($file) {
 $app->get('/', function () {
 
 	$msgPis = MessagePisFile::getMessage(True);
-	$msgFile = MessagePisFile::getMessage(False);
+	$msgFile = MessagePisFile::getMessage(False);	
 
-	$files = ToolsFiles::loadFilesPath();
+	$page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;	
 
-	$page = new Page();
+	$pagination = ToolsFiles::getPage($page);	
 
-	$page->setTpl("index", [
+	$pages = [];
+
+	for ($x = 0; $x < $pagination['pages']; $x++) {
+
+		array_push($pages, [
+			'href' => '/?' . http_build_query([
+				'page' => $x + 1,				
+			]),
+			'text' => $x + 1,
+		]);
+	}			
+
+	$html = new Page();	
+
+	$html->setTpl("index", [
 		'msgPis' => $msgPis,
-		'msgFile' => $msgFile,
-		'files' => $files,
+		'msgFile' => $msgFile,		
+		'files' => $pagination['data'],
+		'pages' => $pages,
+		'page' => $page,
+		
 	]);
 
 });
