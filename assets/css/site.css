@@ -34,7 +34,7 @@
 
 /* Area de trabalho */
 
-.box{
+.frame{
 	border: 1px solid #DCDCDC;
 	padding: 1rem 1rem;
 }
@@ -50,8 +50,8 @@
 	text-transform: uppercase;	
 }
 
-.form-group{	
-	padding-bottom: 1rem;
+.box-files{		
+	height: 20rem;
 }
 
 .custom-file{
