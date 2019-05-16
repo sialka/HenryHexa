@@ -17,12 +17,12 @@
             Consulta
         </h2>
 
-        <div class="row">        
+        <div class="row">
             
-            <div class="col-6">
+            <div class="col-md-6">
                 
-                <form method="POST" action="#">
-
+                <form name="form" method="POST" action="/search">
+                
                     <div class="frame shadow">
                     
                         <div class="form-group"> 
@@ -37,8 +37,10 @@
                                 <i class="fa fa-address-book text-secondary "></i>
                                 PIS
                             </label>
+                            
+                            <input class="form-control" type="text" id="pis" name="pis" placeholder="Digite o seu numero de PIS" maxlength="11" autofocus>
+                            <input type="hidden" id="filetxt" name="filetxt" >                            
 
-                            <input class="form-control" type="text" name="pis" placeholder="Digite o seu numero de PIS" autofocus>
                         </div>                                                   
                     
                         <div class="form-group box-files">
@@ -52,21 +54,20 @@
                                 <table width="100%" class="table table-hover table-bordered ">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th>Lista de Arquivos</th>
-                                            <th></th>
+                                            <th><strong>Lista de Arquivos</strong></th>                                            
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {loop="$files"}
                                         <tr>
-                                            <td width="80%">{function="WithoutExtension($value)"}</td>                                   
-                                            <td class="text-center" width="10%">
-                                                <a href="">
-                                                    <i class="fas fa-search text-success"></i>
-                                                </a>
-                                            </td>
-                                            <td class="text-center" width="10%">
+                                            <td class="namefile">
+                                                <i class="fa fa-download text-info"></i>
+                                                <span>                                                    
+                                                    {function="WithoutExtension($value)"}
+                                                </span>
+                                            </td>                                                                               
+                                            <td class="text-center">
                                                 <a href='/delete/{function="WithoutExtension($value)"}'>
                                                     <i class="fas fa-trash text-danger"></i>
                                                 </a>
@@ -103,13 +104,17 @@
                             </div>
                         </div>                   
 
+                        <div class="btn-area text-right">
+                            <input class="btn btn-primary" type="submit" name="submit" value="Enviar">
+                        </div>
+
                     </div>
 
                 </form>
 
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6">
 
                 <form method="POST" action="/upload" enctype="multipart/form-data">
 
@@ -130,7 +135,7 @@
                             <label class="custom-file-label" for="customFile">Clique para enviar o arquivo</label>
                         </div>   
 
-                        <div class="btn-area text-right">
+                        <div class="text-right">
                             <input class="btn btn-primary" type="submit" name="submit" value="Enviar">
                         </div>                                                     
 

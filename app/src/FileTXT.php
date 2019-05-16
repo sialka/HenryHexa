@@ -4,7 +4,7 @@ namespace app\src;
 
 use App\src\MessagePisFile;
 
-class ToolsFiles {
+class FileTXT {
 
 	public static function loadFilesPath() {
 
@@ -20,9 +20,9 @@ class ToolsFiles {
 
 		$start = ($page - 1) * $itemsPerPage;		
 
-		$dir = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR;
+		$path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR;
 
-		$oldfiles = array_diff(scandir($dir), array('..', '.'));
+		$oldfiles = array_diff(scandir($path,1), array('..', '.'));		
 
 		$files = [];
 		$results = [];
@@ -60,6 +60,10 @@ class ToolsFiles {
 			MessagePisFile::setMessage(True, False, "Arquivo não existe");
 
 		}
+
+	}
+
+	public static function is_valid($file){
 
 	}
 }

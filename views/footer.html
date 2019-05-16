@@ -1,13 +1,18 @@
-   
+  
         <!-- Latest jQuery form server -->
         <script src="https://code.jquery.com/jquery.min.js"></script>
         
         <!-- Bootstrap -->
         <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>    	
-        <script type="text/javascript">	
+		
+		<script type="text/javascript">	
 
-			let div = document.getElementsByClassName("custom-file-label")[0];
-			let input = document.getElementById("file");
+
+			let div = document.getElementsByClassName("custom-file-label")[0]
+			let input = document.getElementById("file")			
+
+			let listFiles = document.getElementsByClassName("namefile")			
+			let inputFile = document.getElementById('filetxt')
 
 			div.addEventListener("click", function(){
 			
@@ -19,10 +24,39 @@
 			    
 			    let nome = "Não há arquivo selecionado. Selecionar arquivo...";
 			    
-			    if(input.files.length > 0) nome = input.files[0].name;
-			    div.innerHTML = nome;
+			    if(input.files.length > 0) nome = input.files[0].name
+			    
+				div.innerHTML = nome
 
 			});	
+						
+
+			for (let index = 0; index < listFiles.length; index++) {
+				
+				listFiles[index].addEventListener("click", function(){
+
+					inputFile.value = listFiles[index].innerText
+					
+					clear();
+					
+					listFiles[index].children[0].className = "fa fa-download text-white"
+					listFiles[index].style.background = "#007bff"	
+					listFiles[index].style.color = "white"					
+
+					
+				})				
+				
+			}
+
+			function clear(){
+
+				for (let index = 0; index < listFiles.length; index++) {
+					listFiles[index].children[0].className = "fa fa-download text-info"					
+					listFiles[index].style.background = ""	
+					listFiles[index].style.color = "black"			
+				}
+
+			}
 
 		</script>
     </body>
