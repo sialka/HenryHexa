@@ -1,24 +1,24 @@
 <?php
 
-use App\src\MessagePisFile;
+use App\src\Message;
 use App\src\Page;
-use App\src\SendFile;
+use App\src\Upload;
 use App\src\FileTXT;
 use App\src\Pis;
 
 $app->post("/search", function(){	
 
 	$pis = (isset($_POST['pis'])) ? $_POST['pis'] : NULL;
-	$file = (isset($_POST['file'])) ? $_POST['file'] : NULL;		
+	$file = (isset($_POST['filetxt'])) ? $_POST['filetxt'] : NULL;		
 
 	if (!$pis){
-		MessagePisFile::setMessage(True,False,"Favor informar o PIS");
+		Message::setMessage('pis','danger',"Favor informar o PIS");
 		header("Location: /");
 		exit;	
 	}
 
 	if (!$file){
-		MessagePisFile::setMessage(True,False,"Favor selecionar o arquivo");
+		Message::setMessage('pis','danger',"Favor selecionar o arquivo");
 		header("Location: /");
 		exit;	
 	}
@@ -26,7 +26,7 @@ $app->post("/search", function(){
 	$validPis = Pis::is_valid($pis);
 
 	if (!$validPis) {
-		MessagePisFile::setMessage(True,False,"PIS inválido");
+		Message::setMessage('pis','danger',"PIS inválido");
 		header("Location: /");
 		exit;	
 	}
@@ -34,7 +34,7 @@ $app->post("/search", function(){
 	$validFile = FileTXT::is_valid($file);
 
 	if (!$validFile) {
-		MessagePisFile::setMessage(True,False,"Arquivo inválido");
+		Message::setMessage('pis','danger',"Arquivo inválido");
 		header("Location: /");
 		exit;	
 	}
@@ -52,8 +52,8 @@ $app->get("/delete/:file", function ($file) {
 
 $app->get('/', function () {
 
-	$msgPis = MessagePisFile::getMessage(True);
-	$msgFile = MessagePisFile::getMessage(False);	
+	$msgPis = Message::getMessage('pis');
+	$msgFile = Message::getMessage('file');	
 
 	$page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;	
 
@@ -87,17 +87,17 @@ $app->get('/', function () {
 $app->post('/upload', function () {
 
 	if (!isset($_FILES['file']) || $_FILES['file']['name'] == null) {
-		MessagePisFile::setMessage(False, False, "Favor selecionar um arquivo");
+		Message::setMessage('file', 'danger', "Favor selecionar um arquivo");
 	} else {
 
-		$arquivo = new SendFile();
+		$arquivo = new Upload();
 
-		$result = $arquivo->download($_FILES['file']);
+		$result = $arquivo->Upload($_FILES['file']);
 
 		if ($result) {
-			MessagePisFile::setMessage(False, True, "Arquivo enviado com sucesso");
+			Message::setMessage('file', 'success', "Arquivo enviado com sucesso");
 		} else {
-			MessagePisFile::setMessage(False, False, "Já existe um arquivo com esse nome");
+			Message::setMessage('file', 'danger', "Já existe um arquivo com esse nome");
 		}
 
 	}

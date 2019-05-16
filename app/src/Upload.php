@@ -2,9 +2,9 @@
 
 namespace App\src;
 
-class SendFile {
+class Upload {
 
-	public function download() {
+	public function upload() {
 
 		$fileName = $_FILES['file']['name'];
 

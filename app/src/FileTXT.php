@@ -2,7 +2,7 @@
 
 namespace app\src;
 
-use App\src\MessagePisFile;
+use App\src\Message;
 
 class FileTXT {
 
@@ -53,17 +53,19 @@ class FileTXT {
 		if (file_exists($deleted)) {
 
 			unlink($deleted);
-			MessagePisFile::setMessage(True, True, "Arquivo deletado com sucesso");
+			Message::setMessage('pis', 'success', "Arquivo deletado com sucesso");
 
 		} else {
 
-			MessagePisFile::setMessage(True, False, "Arquivo não existe");
+			Message::setMessage('pis', 'danger', "Arquivo não existe");
 
 		}
 
 	}
 
 	public static function is_valid($file){
+
+		
 
 	}
 }
