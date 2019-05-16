@@ -3,11 +3,48 @@
 use App\src\MessagePisFile;
 use App\src\Page;
 use App\src\SendFile;
-use App\src\ToolsFiles;
+use App\src\FileTXT;
+use App\src\Pis;
+
+$app->post("/search", function(){	
+
+	$pis = (isset($_POST['pis'])) ? $_POST['pis'] : NULL;
+	$file = (isset($_POST['file'])) ? $_POST['file'] : NULL;		
+
+	if (!$pis){
+		MessagePisFile::setMessage(True,False,"Favor informar o PIS");
+		header("Location: /");
+		exit;	
+	}
+
+	if (!$file){
+		MessagePisFile::setMessage(True,False,"Favor selecionar o arquivo");
+		header("Location: /");
+		exit;	
+	}
+
+	$validPis = Pis::is_valid($pis);
+
+	if (!$validPis) {
+		MessagePisFile::setMessage(True,False,"PIS inválido");
+		header("Location: /");
+		exit;	
+	}
+
+	$validFile = FileTXT::is_valid($file);
+
+	if (!$validFile) {
+		MessagePisFile::setMessage(True,False,"Arquivo inválido");
+		header("Location: /");
+		exit;	
+	}
+	
+
+});
 
 $app->get("/delete/:file", function ($file) {	
 	
-	ToolsFiles::deleteFile($file);
+	FileTXT::deleteFile($file);
 
 	header("Location: /");
 	exit;
@@ -20,7 +57,7 @@ $app->get('/', function () {
 
 	$page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;	
 
-	$pagination = ToolsFiles::getPage($page);	
+	$pagination = FileTXT::getPage($page);	
 
 	$pages = [];
 
