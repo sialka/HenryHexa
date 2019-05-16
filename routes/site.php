@@ -4,7 +4,7 @@ use App\src\Message;
 use App\src\Page;
 use App\src\Upload;
 use App\src\FileTXT;
-use App\src\Pis;
+use App\src\ValidDoc;
 
 $app->post("/search", function(){	
 
@@ -23,9 +23,9 @@ $app->post("/search", function(){
 		exit;	
 	}
 
-	$validPis = Pis::is_valid($pis);
+	$pis = ValidDoc::PIS_is_valid($pis);
 
-	if (!$validPis) {
+	if (!$pis) {
 		Message::setMessage('pis','danger',"PIS inválido");
 		header("Location: /");
 		exit;	
@@ -38,7 +38,12 @@ $app->post("/search", function(){
 		header("Location: /");
 		exit;	
 	}
-	
+
+	$html = new Page();	
+
+	$html->setTpl("records", [
+		'data' => [],	
+	]);	
 
 });
 
